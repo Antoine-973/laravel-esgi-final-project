@@ -16,7 +16,7 @@
                     @if(count(Auth::user()->products) > 0)
                         @foreach(Auth::user()->products as $product)
                             <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="" alt="card image">
+                            <img class="card-img-top" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
                                 <div class="card-body">
                                     <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->title }}</a></h5>
                                     <p class="card-text">{{ $product->subtitle}}</p>

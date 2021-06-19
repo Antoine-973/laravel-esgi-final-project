@@ -53,14 +53,13 @@ class UserController extends Controller
         $product->category_id = $request->category_id;
         $product->user_id = Auth::user()->id;
         
-        //$image = $request->file('image');
-        //$imageFullName = $request->file('image')->getClientOriginalName();
-        //$imageName = pathinfo($imageFullName, PATHINFO_FILENAME);
-        //$extension = $image->getClientOriginalExtension();
-        //$file = time().'_'.$imageName.'.'.$extension;
-        //$image->storeAs('public/products/'.Auth::user()->id,$file);
-        //$product->image = $file;
-        $product->image = 0;
+        $image = $request->file('image');
+        $imageFullName = $request->file('image')->getClientOriginalName();
+        $imageName = pathinfo($imageFullName, PATHINFO_FILENAME);
+        $extension = $image->getClientOriginalExtension();
+        $file = time().'_'.$imageName.'.'.$extension;
+        $image->storeAs('public/products/'.Auth::user()->id,$file);
+        $product->image = $file;
         
         $product->save();
         return redirect()->route('dashboard');
