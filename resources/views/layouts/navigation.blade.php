@@ -18,7 +18,7 @@
                     <x-nav-link :href="route('dashboard')">
                         {{ __('Profil') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('dashboard')">
+                    <x-nav-link :href="route('create')">
                         {{ __('Vendre') }}
                     </x-nav-link>
                 </div>

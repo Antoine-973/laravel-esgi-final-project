@@ -29,7 +29,7 @@
                     @else
                     <div class="row">
                         <h5>Vous n'avez aucun article en vente.</h5>
-                        <div class="btn-actions d-flex justify-content-center"><a href="#" class="btn btn-primary">Vendre un article ?</a></div>
+                        <div class="btn-actions d-flex justify-content-center"><a href="create" class="btn btn-primary">Vendre un article ?</a></div>
                     </div>
                     @endif
                     
