@@ -25,5 +25,7 @@ Route::get('/dashboard', function () {
 Route::get('/create', [UserController::class, 'create'])->name('create');
 Route::post('/store', [UserController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
+Route::get('/update/{id}', [UserController::class, 'update'])->name('update');
+Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
 
 require __DIR__.'/auth.php';

@@ -22,6 +22,7 @@
                                     <p class="card-text">{{ $product->subtitle}}</p>
                                     <span><i class="bi bi-clock"></i> {{ $product->created_at }} </span>
                                     <div class="btn-actions d-flex justify-content-center"><a href="edit/{{ $product->id }}" class="btn btn-primary">Modifier</a></div>
+                                    <div class="btn-actions d-flex justify-content-center"><a href="delete/{{ $product->id }}" class="btn btn-danger">Supprimer</a></div>
                                 </div>
                             </div>
                         @endforeach

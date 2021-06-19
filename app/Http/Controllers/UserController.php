@@ -98,7 +98,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $slugify = new Slugify();
+        $product = Product::find($id);
+
+        $product->title = $request->input('title');
+        $product->subtitle = $request->input('subtitle');
+        $product->slug = $slugify->slugify($product->title);
+        $product->description = $request->input('description');
+        $product->category_id = $request->category_id;
+        $product->user_id = Auth::user()->id;
+        
+        if($request->file('image')) {
+            $image = $request->file('image');
+            $imageFullName = $request->file('image')->getClientOriginalName();
+            $imageName = pathinfo($imageFullName, PATHINFO_FILENAME);
+            $extension = $image->getClientOriginalExtension();
+            $file = time().'_'.$imageName.'.'.$extension;
+            $image->storeAs('public/products/'.Auth::user()->id,$file);
+            $product->image = $file;
+        }
+        
+        $product->save();
+        return redirect()->route('dashboard');
     }
 
     /**
@@ -109,6 +130,8 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        $product->delete();
+        return redirect()->route('dashboard');
     }
 }

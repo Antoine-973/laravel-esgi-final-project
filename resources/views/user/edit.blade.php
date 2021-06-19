@@ -12,7 +12,7 @@
                     <h4>Vendre un article</h4>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                {!! Form::open(['route' => 'store', 'files' => true]) !!}
+                {!! Form::open(['route' => 'update', 'files' => true]) !!}
                     @csrf
                     Titre : {!! Form::text('title',['placeholder'=>'$product->title']); !!}<br><br>
                     Sous titre : {!! Form::text('subtitle',$product->subtitle); !!}<br><br>
