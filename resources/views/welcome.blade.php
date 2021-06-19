@@ -76,7 +76,7 @@
                     <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="flex items-center">
                                 <img src="/images/all.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Voir tout les articles</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Voir tout les articles en ventes</a></div>
                             </div>
                         </div>
                 </div>

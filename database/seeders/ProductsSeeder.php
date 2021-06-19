@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Category;
+use App\Models\User;
 use App\Models\Product;
 use Illuminate\Database\Seeder;
 use Cocur\Slugify\Slugify;
@@ -25,6 +26,7 @@ class ProductsSeeder extends Seeder
         $product->description = "Chemise à motif fleur pour homme achetée en Mars";
         $product->price = 45.99;
         $product->category_id = Category::all()->random(1)->first()->id;
+        $product->user_id = User::all()->random(1)->first()->id;
         $product->save();
 
         $product = new Product();
@@ -34,6 +36,7 @@ class ProductsSeeder extends Seeder
         $product->description = "Belle bougie de la marque PartyLite";
         $product->price = 29.00;
         $product->category_id = Category::all()->random(1)->first()->id;
+        $product->user_id = User::all()->random(1)->first()->id;
         $product->save();
 
         $product = new Product();
@@ -43,6 +46,7 @@ class ProductsSeeder extends Seeder
         $product->description = "Tshirt de sport neuf pour le sport";
         $product->price = 20.00;
         $product->category_id = Category::all()->random(1)->first()->id;
+        $product->user_id = User::all()->random(1)->first()->id;
         $product->save();
 
         $product = new Product();
@@ -52,6 +56,7 @@ class ProductsSeeder extends Seeder
         $product->description = "3 tomes du seigneur des anneaux en format poche";
         $product->price = 15.00;
         $product->category_id = Category::all()->random(1)->first()->id;
+        $product->user_id = User::all()->random(1)->first()->id;
         $product->save();
 
         $product = new Product();
@@ -61,6 +66,7 @@ class ProductsSeeder extends Seeder
         $product->description = "Pour la piscine ou la plage";
         $product->price = 2.00;
         $product->category_id = Category::all()->random(1)->first()->id;
+        $product->user_id = User::all()->random(1)->first()->id;
         $product->save();
     }
 }
