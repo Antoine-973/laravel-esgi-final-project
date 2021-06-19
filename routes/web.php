@@ -24,5 +24,6 @@ Route::get('/dashboard', function () {
 
 Route::get('/create', [UserController::class, 'create'])->name('create');
 Route::post('/store', [UserController::class, 'store'])->name('store');
+Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 
 require __DIR__.'/auth.php';

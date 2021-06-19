@@ -84,7 +84,9 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::pluck('name', 'id');
+        $product = Product::find($id);
+        return view('user.edit', ['categories'=>$categories, 'product' => $product]);
     }
 
     /**
