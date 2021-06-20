@@ -47,27 +47,44 @@
                     <h4>Voici l'article de {{ $product->user_id }}</h4>
                 </div>
                 <div class="container">
-                    <div class="card" style="width: 40rem;">
+                    <div class="card" style="width: 80rem;">
                         <div class="text-center">
                             <img class="rounded"  style="width: 20rem;" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
                         </div>
-                        <div class="card-body" style="width: 40rem;">
+                        <div class="card-body">
                             <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->title }}</a></h5>
                             <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->subtitle }}</a></h5>
                             <p class="card-text">{{ $product->description}}</p>
                             <span><i class="bi bi-clock"></i> {{ $product->created_at }} </span>
                         </div>
                     </div>
-                    <div class="card" style="width: 40rem;">
-                    <div class="card-header">
-                        Les commentaires
+                    <div class="card">
+                        <div class="card-header">
+                            Les commentaires
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Commentaire</li>
+                            <li class="list-group-item">Commentaire</li>
+                            <li class="list-group-item">Commentaire</li>
+                        </ul>
                     </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">Commentaire</li>
-                        <li class="list-group-item">Commentaire</li>
-                        <li class="list-group-item">Commentaire</li>
-                    </ul>
-                    </div>
+                    @if (Route::has('login'))
+                        <div class="row">
+                            @auth
+                            {!! Form::open(['route' => 'welcome']) !!}
+                                <span class="input-group-text">Ecrire un commentaire</span>
+                                {!! Form::text('comment'); !!}
+                                {!! Form::submit('Envoyer'); !!}
+                            {!! Form::close() !!}
+                            @else
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Se connecter pour écrire un commentaire</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">S'inscrire</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
                 </div>
                 <div class="flex justify-center">
                     <a href="{{ route('listProducts') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
