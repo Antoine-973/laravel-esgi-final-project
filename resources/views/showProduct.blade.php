@@ -39,24 +39,26 @@
                 </div>
             @endif
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="">
                 <div class="flex justify-center">
                     <img src="/images/logo.png" class="img-thumbnail">
                 </div>
                 <div class="flex justify-center">
                     <h4>Voici l'article de {{ $product->user_id }}</h4>
                 </div>
-                <div class="mt-12 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
-                        <div class="card-body">
+                <div class="container">
+                    <div class="card" style="width: 40rem;">
+                        <div class="text-center">
+                            <img class="rounded"  style="width: 20rem;" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
+                        </div>
+                        <div class="card-body" style="width: 40rem;">
                             <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->title }}</a></h5>
                             <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->subtitle }}</a></h5>
                             <p class="card-text">{{ $product->description}}</p>
                             <span><i class="bi bi-clock"></i> {{ $product->created_at }} </span>
                         </div>
                     </div>
-                    <div class="card" style="width: 18rem;">
+                    <div class="card" style="width: 40rem;">
                     <div class="card-header">
                         Les commentaires
                     </div>

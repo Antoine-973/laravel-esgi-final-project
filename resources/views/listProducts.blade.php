@@ -95,6 +95,7 @@
                     </tfoot>
                     </table>
                 </div>
+                <a href="{{ route('welcome') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i> Retour à l'accueil.</a>
             </div>
         </div>
     </body>
