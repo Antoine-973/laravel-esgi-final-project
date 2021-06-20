@@ -27,6 +27,7 @@ class ProductsSeeder extends Seeder
         $product->price = 45.99;
         $product->category_id = Category::all()->random(1)->first()->id;
         $product->user_id = User::all()->random(1)->first()->id;
+        $product->image = "1624134750_baby-boy.png";
         $product->save();
 
         $product = new Product();
@@ -37,6 +38,7 @@ class ProductsSeeder extends Seeder
         $product->price = 29.00;
         $product->category_id = Category::all()->random(1)->first()->id;
         $product->user_id = User::all()->random(1)->first()->id;
+        $product->image = "1624134750_baby-boy.png";
         $product->save();
 
         $product = new Product();
@@ -47,6 +49,7 @@ class ProductsSeeder extends Seeder
         $product->price = 20.00;
         $product->category_id = Category::all()->random(1)->first()->id;
         $product->user_id = User::all()->random(1)->first()->id;
+        $product->image = "1624134750_baby-boy.png";
         $product->save();
 
         $product = new Product();
@@ -57,6 +60,7 @@ class ProductsSeeder extends Seeder
         $product->price = 15.00;
         $product->category_id = Category::all()->random(1)->first()->id;
         $product->user_id = User::all()->random(1)->first()->id;
+        $product->image = "1624134750_baby-boy.png";
         $product->save();
 
         $product = new Product();
@@ -67,6 +71,7 @@ class ProductsSeeder extends Seeder
         $product->price = 2.00;
         $product->category_id = Category::all()->random(1)->first()->id;
         $product->user_id = User::all()->random(1)->first()->id;
+        $product->image = "1624134750_baby-boy.png";
         $product->save();
     }
 }

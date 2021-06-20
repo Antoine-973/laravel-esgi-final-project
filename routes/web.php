@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,10 @@ use App\Http\Controllers\UserController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/listProducts', [ProductController::class, 'index'])->name('listProducts');
+Route::get('/showProduct/{id}', [ProductController::class, 'show'])->name('showProducts');
+
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');

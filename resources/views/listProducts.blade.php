@@ -19,6 +19,9 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -41,44 +44,56 @@
                     <img src="/images/logo.png" class="img-thumbnail">
                 </div>
                 <div class="flex justify-center">
-                    <h4>Avec Lebonangle, trouvez la bonne affaire, réalisez-la bonne vente pour vos produits !</h4>
+                    <h4>Voici tout les articles en vente :</h4>
                 </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <img src="/images/woman.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Femmes</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/man.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Hommes</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <img src="/images/kid.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Enfants</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/house.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Home</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/all.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les articles en ventes</a></div>
-                            </div>
-                        </div>
+                <div class="mt-12 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Sous-titre</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Vendeur</th>
+                        <th scope="col">Voir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @foreach($products as $product)
+                        <tr>
+                        <th scope="row">{{ $product->id }}</th>
+                        <td><img class="card-img-top" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
+                        <td>{{ $product->title }}</td>
+                        <td>{{ $product->subtitle }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->created_at }}</td>
+                        <td>{{ $product->price }}$</td>
+                        <td>{{ $product->category_id }}</td>
+                        <td>{{ $product->user_id }}</td>
+                        <td><a href="showProduct/{{ $product->id }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i>Voir</a></td>
+                        </tr>
+                        <tr>
+                    @endforeach
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Photo</th>
+                        <th scope="col">Titre</th>
+                        <th scope="col">Sous-titre</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Prix</th>
+                        <th scope="col">Catégorie</th>
+                        <th scope="col">Vendeur</th>
+                        <th scope="col">Voir</th>
+                        </tr>
+                    </tfoot>
+                    </table>
                 </div>
             </div>
         </div>

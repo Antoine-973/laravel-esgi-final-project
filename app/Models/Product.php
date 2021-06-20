@@ -2,8 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Category;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Product extends Model
 {
@@ -11,11 +13,11 @@ class Product extends Model
 
     public function category()
     {
-        return $this->belongsTo('App\Model\Category');
+        return $this->belongsTo(Category::class, 'id');
     }
 
     public function user()
     {
-        return $this->belongsTo('App\Model\User');
+        return $this->belongsTo(User::class, 'id');
     }
 }
