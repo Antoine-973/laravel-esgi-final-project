@@ -134,4 +134,20 @@ class UserController extends Controller
         $product->delete();
         return redirect()->route('dashboard');
     }
+
+    public function createComment(Request $request)
+    {
+        $slugify = new Slugify();
+        
+        $comment = new Product();
+        $comment->title = $request->input('title');
+        $comment->slug = $slugify->slugify($comment->title);
+        $comment->description = $request->input('description');
+        $comment->product_id = $request->product_id;
+        $comment->user_id = Auth::user()->id;
+        var_dump($comment->product_id);
+        die;
+        //$comment->save();
+        return back();
+    }
 }

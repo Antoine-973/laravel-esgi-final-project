@@ -32,5 +32,6 @@ Route::post('/store', [UserController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 Route::get('/update/{id}', [UserController::class, 'update'])->name('update');
 Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
+Route::post('/createComment', [UserController::class, 'createComment'])->name('createComment');
 
 require __DIR__.'/auth.php';

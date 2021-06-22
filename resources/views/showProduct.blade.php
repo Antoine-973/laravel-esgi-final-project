@@ -52,29 +52,36 @@
                             <img class="rounded"  style="width: 20rem;" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
                         </div>
                         <div class="card-body">
-                            <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->title }}</a></h5>
-                            <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->subtitle }}</a></h5>
-                            <p class="card-text">{{ $product->description}}</p>
-                            <span><i class="bi bi-clock"></i> {{ $product->created_at }} </span>
+                            <h5 class="card-title">Titre : <br>{{ $product->title }} - {{ $product->subtitle }}</h5><br>
+                            <p class="card-text">Description : <br>{{ $product->description}}</p><br>
+                            <span> Mise en ligne le : {{ $product->created_at }} <i class="bi bi-clock"></i></span>
                         </div>
                     </div>
+                <div class="container">
                     <div class="card">
                         <div class="card-header">
                             Les commentaires
                         </div>
                         <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Commentaire</li>
-                            <li class="list-group-item">Commentaire</li>
-                            <li class="list-group-item">Commentaire</li>
+                        @foreach($comments as $comment)
+                        <li class="list-group-item">Commentaire de {{ $comment->user_id }}<br><br>
+                        {{ $comment->title }} <br> {{ $comment->description }} <br><br>
+                        Le {{ $comment->created_at }} <i class="bi bi-clock"></i>
+                        </li>
+                    @endforeach
                         </ul>
                     </div>
+                </div>
+                <div class="container">
                     @if (Route::has('login'))
                         <div class="row">
                             @auth
-                            {!! Form::open(['route' => 'welcome']) !!}
+                            {!! Form::open(['route' => 'createComment']) !!}
+                            @csrf
                                 <span class="input-group-text">Ecrire un commentaire</span>
-                                {!! Form::text('comment'); !!}
-                                {!! Form::submit('Envoyer'); !!}
+                                Titre : {!! Form::text('title'); !!}
+                                Commentaire : {!! Form::text('description'); !!}
+                                {!! Form::submit('Envoyer le commentaire'); !!}
                             {!! Form::close() !!}
                             @else
                                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Se connecter pour écrire un commentaire</a>

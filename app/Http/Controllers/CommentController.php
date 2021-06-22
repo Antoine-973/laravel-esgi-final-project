@@ -4,11 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-use App\Models\Category;
 use App\Models\User;
-use App\Models\Comment;
 
-class ProductController extends Controller
+class CommentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +15,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $users = User::all();
-        return view('listProducts', ['products'=>$products, 'users'=>$users]);
+        //
     }
 
     /**
@@ -51,9 +47,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        $comments = Comment::where('product_id', $id)->orderBy('created_at')->get();
-        return view('showProduct', ['product' => $product, 'comments' => $comments]);
+        //
     }
 
     /**
