@@ -19,6 +19,9 @@
                 font-family: 'Nunito', sans-serif;
             }
         </style>
+
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -36,49 +39,55 @@
                 </div>
             @endif
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="">
                 <div class="flex justify-center">
                     <img src="/images/logo.png" class="img-thumbnail">
                 </div>
                 <div class="flex justify-center">
-                    <h4>Avec Lebonangle, trouvez la bonne affaire, réalisez-la bonne vente pour vos produits !</h4>
+                    <h4>Voici l'article de {{ $product->user_id }}</h4>
                 </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <img src="/images/woman.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Femmes</a></div>
-                            </div>
+                <div class="container">
+                    <div class="card" style="width: 80rem;">
+                        <div class="text-center">
+                            <img class="rounded"  style="width: 20rem;" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/man.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Hommes</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <img src="/images/kid.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Enfants</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/house.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Home</a></div>
-                            </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->title }}</a></h5>
+                            <h5 class="card-title"><a class="btn font-weight-bold" href="">{{ $product->subtitle }}</a></h5>
+                            <p class="card-text">{{ $product->description}}</p>
+                            <span><i class="bi bi-clock"></i> {{ $product->created_at }} </span>
                         </div>
                     </div>
-                    <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/all.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les articles en ventes</a></div>
-                            </div>
+                    <div class="card">
+                        <div class="card-header">
+                            Les commentaires
                         </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">Commentaire</li>
+                            <li class="list-group-item">Commentaire</li>
+                            <li class="list-group-item">Commentaire</li>
+                        </ul>
+                    </div>
+                    @if (Route::has('login'))
+                        <div class="row">
+                            @auth
+                            {!! Form::open(['route' => 'welcome']) !!}
+                                <span class="input-group-text">Ecrire un commentaire</span>
+                                {!! Form::text('comment'); !!}
+                                {!! Form::submit('Envoyer'); !!}
+                            {!! Form::close() !!}
+                            @else
+                                <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Se connecter pour écrire un commentaire</a>
+
+                                @if (Route::has('register'))
+                                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">S'inscrire</a>
+                                @endif
+                            @endauth
+                        </div>
+                    @endif
+                </div>
+                <div class="flex justify-center">
+                    <a href="{{ route('listProducts') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
                 </div>
             </div>
         </div>
