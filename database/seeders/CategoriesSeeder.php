@@ -15,92 +15,92 @@ class CategoriesSeeder extends Seeder
     public function run()
     {
         $category = new Category();
-        $category->icon = '<i class="fas fa-fire"></i>';
+        $category->icon = 'bi bi-puzzle-fill';
         $category->name = "Feu";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-tint"></i>';
+        $category->icon = 'fas fa-tint';
         $category->name = "Eau";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-leaf"></i>';
+        $category->icon = 'fas fa-leaf';
         $category->name = "Feuille";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-moon"></i>';
+        $category->icon = 'fas fa-moon';
         $category->name = "Ténèbre";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-ghost"></i>';
+        $category->icon = 'fas fa-ghost';
         $category->name = "Esprit";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-wave-square"></i>';
+        $category->icon = 'fas fa-wave-square';
         $category->name = "Psy";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-bug"></i>';
+        $category->icon = 'fas fa-bug';
         $category->name = "Insecte";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-bolt"></i>';
+        $category->icon = 'fas fa-bolt';
         $category->name = "Electrique";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-feather-alt"></i>';
+        $category->icon = 'fas fa-feather-alt';
         $category->name = "Vol";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-hand-rock"></i>s';
+        $category->icon = 'fas fa-hand-rock';
         $category->name = "Combat";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-star"></i>';
+        $category->icon = 'fas fa-star';
         $category->name = "Normal";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-cogs"></i>';
+        $category->icon = 'fas fa-cogs';
         $category->name = "Acier";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-cookie"></i>';
+        $category->icon = 'fas fa-cookie';
         $category->name = "Roche";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-globe-americas"></i>';
+        $category->icon = 'fas fa-globe-americas';
         $category->name = "Sol";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-skull-crossbones"></i>';
+        $category->icon = 'fas fa-skull-crossbones';
         $category->name = "Poison";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-ice-cream"></i>';
+        $category->icon = 'fas fa-ice-cream';
         $category->name = "Glace";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fas fa-dragon"></i>';
+        $category->icon = 'fas fa-dragon';
         $category->name = "Dragon";
         $category->save();
 
         $category = new Category();
-        $category->icon = '<i class="fab fa-accessible-icon"></i>';
+        $category->icon = 'fab fa-accessible-icon';
         $category->name = "Différent";
         $category->save();
     }

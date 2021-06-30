@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Le bon angle</title>
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.3/css/all.css">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -46,10 +49,9 @@
                 <div class="bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-6">
                     @foreach($categories as $category)
-
                         <div class="p-2">
                             <div class="flex items-center">
-                                <i>{{ $category->icon }}</i>
+                                <i class="{{ $category->icon }}"></i>
                                 <div class="ml-2 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
                             </div>
                         </div>
