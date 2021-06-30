@@ -38,40 +38,22 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center">
-                    <img src="/images/logo.png" class="img-thumbnail">
+                    <img src="/images/logo.jpg" class="img-thumbnail">
                 </div>
                 <div class="flex justify-center">
-                    <h4>Avec Lebonangle, trouvez la bonne affaire, réalisez-la bonne vente pour vos produits !</h4>
+                    <h1>Avec Pok-Ebay, trouvez la bonne affaire, réalisez-la bonne vente pour vos produits ! ACHETEZ LES TOUS !</h1>
                 </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <img src="/images/woman.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Femmes</a></div>
-                            </div>
-                        </div>
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-6">
+                    @foreach($categories as $category)
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
+                        <div class="p-2">
                             <div class="flex items-center">
-                                <img src="/images/man.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Hommes</a></div>
+                                <i>{{ $category->icon }}</i>
+                                <div class="ml-2 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
                             </div>
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <img src="/images/kid.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Enfants</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/house.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Home</a></div>
-                            </div>
-                        </div>
+                    @endforeach
                     </div>
                     <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="flex items-center">

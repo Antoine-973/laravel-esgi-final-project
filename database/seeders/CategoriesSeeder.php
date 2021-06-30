@@ -98,5 +98,10 @@ class CategoriesSeeder extends Seeder
         $category->icon = '<i class="fas fa-dragon"></i>';
         $category->name = "Dragon";
         $category->save();
+
+        $category = new Category();
+        $category->icon = '<i class="fab fa-accessible-icon"></i>';
+        $category->name = "Différent";
+        $category->save();
     }
 }

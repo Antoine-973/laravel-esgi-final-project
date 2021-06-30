@@ -41,7 +41,7 @@
 
             <div class="">
                 <div class="flex justify-center">
-                    <img src="/images/logo.png" class="img-thumbnail">
+                    <img src="/images/logo.jpg" class="img-thumbnail">
                 </div>
                 <div class="flex justify-center">
                     <h4>Voici l'article de {{ $product->user_id }}</h4>
