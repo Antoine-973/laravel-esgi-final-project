@@ -73,7 +73,7 @@
                         <td>{{ $product->created_at }}</td>
                         <td>{{ $product->price }}$</td>
                         <td>{{ $product->category_id }}</td>
-                        <td>{{ $product->user_id }}</td>
+                        <td>{{ isset($product->user->name) ? $product->user->name : "" }}</td>
                         <td><a href="showProduct/{{ $product->id }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i>Voir</a></td>
                         </tr>
                         <tr>
