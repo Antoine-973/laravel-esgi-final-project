@@ -17,9 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
-        $users = User::all();
-        return view('listProducts', ['products'=>$products, 'users'=>$users]);
+        //
     }
 
     /**
@@ -51,9 +49,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::find($id);
-        $comments = Comment::where('product_id', $id)->orderBy('created_at')->get();
-        return view('showProduct', ['product' => $product, 'comments' => $comments]);
+        //
     }
 
     /**

@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Le bon angle</title>
+        <title>POK-EBAY</title>
         <!-- Icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
         <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.3/css/all.css">
@@ -52,15 +52,16 @@
                         <div class="p-2">
                             <div class="flex items-center">
                                 <i class="{{ $category->icon }}"></i>
-                                <div class="ml-2 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
+                                <div class="ml-2 text-lg leading-7 font-semibold"><a href="{{ $category->id }}" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
                             </div>
                         </div>
                     @endforeach
                     </div>
                     <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
+                            <div class="d-flex justify-content-center">
                                 <img src="/images/all.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les articles en ventes</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les Pokemons en ventes </a></div>&emsp;
+                                <img src="/images/all.png" class="img-thumbnail">
                             </div>
                         </div>
                 </div>
