@@ -17,32 +17,39 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+
         $user = new User();
-        $user->name = Str::random(10);
+        $user->name = 'Sacha DuBourgPallette';
         $user->email = Str::random(10).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
+        $user->name = 'Red';
         $user->email = Str::random(10).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
+        $user->name = 'Calvin LeTerrible';
         $user->email = Str::random(10).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
+        $user->name = 'Antoine LeCollectionneur';
         $user->email = Str::random(10).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
+        $user->name = 'Christian LeDissequeurDePokemon';
+        $user->email = Str::random(10).'@gmail.com';
+        $user->password = Hash::make('password');
+        $user->save();
+
+        $user = new User();
+        $user->name = 'Prado LeMaitrePokemon';
         $user->email = Str::random(10).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();

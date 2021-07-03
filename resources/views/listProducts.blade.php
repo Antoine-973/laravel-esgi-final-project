@@ -63,7 +63,7 @@
                     @foreach($products as $product)
                         <tr>
                         <th scope="row">{{ $product->id }}</th>
-                        <td><img class="card-img-top" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
+                        <td><img class="card-img-top" src="../storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
                         <td>{{ $product->title }}</td>
                         <td>{{ $product->subtitle }}</td>
                         <td>{{ $product->description }}</td>
