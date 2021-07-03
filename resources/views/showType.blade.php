@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>POK-EBAY</title>
+        <title>Le bon angle</title>
+
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.3/css/all.css">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -39,11 +43,11 @@
                 </div>
             @endif
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+            <div class="">
                 <div class="flex justify-center">
-                    <h4>Voici la liste de tout les Pokemons en vente :</h4>
+                    <h4>Voici la liste des Pokemons type <i class="{{ $category->icon }}"></i></h4>
                 </div>
-                <div class="mt-12 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                <div class="container">
                     <table class="table table-hover">
                     <thead>
                         <tr>
@@ -60,7 +64,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    @foreach($products as $product)
+                    @foreach($productByType as $product)
                         <tr>
                         <th scope="row">{{ $product->id }}</th>
                         <td><img class="card-img-top" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
@@ -71,7 +75,7 @@
                         <td>{{ $product->price }}$</td>
                         <td>{{ $product->category_id }}</td>
                         <td>{{ $product->user_id }}</td>
-                        <td><a href="showProduct/{{ $product->id }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i>Voir</a></td>
+                        <td><a href="{{ route('showProduct',$product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i>Voir</a></td>
                         </tr>
                         <tr>
                     @endforeach
@@ -92,7 +96,9 @@
                     </tfoot>
                     </table>
                 </div>
-                <a href="{{ route('welcome') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i> Retour à l'accueil.</a>
+                <div class="flex justify-center">
+                    <a href="{{ route('welcome') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
+                </div>
             </div>
         </div>
     </body>

@@ -29,4 +29,11 @@ class HomeController extends Controller
         $comments = Comment::where('product_id', $id)->orderBy('created_at')->get();
         return view('showProduct', ['product' => $product, 'comments' => $comments]);
     }
+
+    public function showType($id)
+    {
+        $category = Category::find($id);
+        $productByType = Product::where('category_id', $id)->orderBy('created_at')->get();
+        return view('showType', ['productByType' => $productByType, 'category' => $category]);
+    }
 }

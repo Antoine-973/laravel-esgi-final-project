@@ -19,8 +19,8 @@ use App\Http\Controllers\HomeController;
 Route::get('/', [HomeController::class, 'index'])->name('welcome');
 
 Route::get('/listProducts', [HomeController::class, 'listProducts'])->name('listProducts');
-Route::get('/showProduct/{id}', [HomeController::class, 'showProduct'])->name('showProducts');
-Route::get('/showType/{id}', [HomeController::class, 'showType'])->name('showTypes');
+Route::get('/showProduct/{id}', [HomeController::class, 'showProduct'])->name('showProduct');
+Route::get('/showType/{id}', [HomeController::class, 'showType'])->name('showType');
 
 
 

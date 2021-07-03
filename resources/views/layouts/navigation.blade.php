@@ -32,7 +32,7 @@
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
-                                <img src="/images/logo.jpg" class="img-thumbnail">
+                                <img src="/images/logo.jpg" class="" width="40" height="50">
                             </div>
                         </button>
                     </x-slot>

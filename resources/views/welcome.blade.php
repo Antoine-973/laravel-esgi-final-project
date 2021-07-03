@@ -52,7 +52,7 @@
                         <div class="p-2">
                             <div class="flex items-center">
                                 <i class="{{ $category->icon }}"></i>
-                                <div class="ml-2 text-lg leading-7 font-semibold"><a href="{{ $category->id }}" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
+                                <div class="ml-2 text-lg leading-7 font-semibold"><a href="showType/{{ $category->id }}" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
                             </div>
                         </div>
                     @endforeach
