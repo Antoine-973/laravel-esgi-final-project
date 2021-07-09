@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Le bon angle</title>
+        <title>POKE-EBAY</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -27,22 +27,27 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a></button>
+                @auth
+                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
+                        <button type="button" class="btn btn-info btn-md"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
+                            <i class="bi bi-cart4"></i>
+                            @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+                                <span class="badge bg-danger">
+                                    {{ count(\Cart::session(Auth::user()->id)->getContent()) }}
+                                </span>
+                            @endif
+                    </a></button>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Connexion</a>
+                        <a href="{{ route('login') }}" class="text-lg text-gray-700 underline">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Inscription</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-lg text-gray-700 underline">Inscription</a>
                         @endif
                     @endauth
                 </div>
             @endif
 
-            <div class="">
-                <div class="flex justify-center">
-                    <img src="/images/logo.jpg" class="img-thumbnail">
-                </div>
+            <div class="container">
                 <div class="flex justify-center">
                     <h4>Voici l'article de {{ $product->user_id }}</h4>
                 </div>
@@ -54,9 +59,11 @@
                         <div class="card-body">
                             <h5 class="card-title">Titre : <br>{{ $product->title }} - {{ $product->subtitle }}</h5><br>
                             <p class="card-text">Description : <br>{{ $product->description}}</p><br>
-                            <span> Mise en ligne le : {{ $product->created_at }} <i class="bi bi-clock"></i></span>
+                            <span> Mise en ligne le : {{ $product->created_at }} <i class="bi bi-clock"></i></span><br><br>
+                            <a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i>Ajouter au panier</a>
                         </div>
                     </div>
+                </div>
                 <div class="container">
                     <div class="card">
                         <div class="card-header">

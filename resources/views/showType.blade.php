@@ -31,13 +31,21 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a></button>
+                @auth
+                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
+                        <button type="button" class="btn btn-info btn-md"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
+                            <i class="bi bi-cart4"></i>
+                            @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+                                <span class="badge bg-danger">
+                                    {{ count(\Cart::session(Auth::user()->id)->getContent()) }}
+                                </span>
+                            @endif
+                    </a></button>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Connexion</a>
+                        <a href="{{ route('login') }}" class="text-lg text-gray-700 underline">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Inscription</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-lg text-gray-700 underline">Inscription</a>
                         @endif
                     @endauth
                 </div>
@@ -61,6 +69,7 @@
                         <th scope="col">Catégorie</th>
                         <th scope="col">Vendeur</th>
                         <th scope="col">Voir</th>
+                        <th scope="col">Panier</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -75,7 +84,9 @@
                         <td>{{ $product->price }}$</td>
                         <td>{{ $product->category_id }}</td>
                         <td>{{ $product->user_id }}</td>
-                        <td><a href="{{ route('showProduct',$product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i>Voir</a></td>
+                        <td><a href="{{ route('showProduct',$product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a></td>
+                        <td><a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i></a></td>
+                        
                         </tr>
                         <tr>
                     @endforeach

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,5 +35,10 @@ Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
 Route::get('/update/{id}', [UserController::class, 'update'])->name('update');
 Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
 Route::post('/createComment', [UserController::class, 'createComment'])->name('createComment');
+
+Route::get('/cart', [CartController::class, 'index'])->name('cart');
+Route::get('/cart/store/{id}', [CartController::class, 'store'])->name('storeCart');
+Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('destroyCart');
+Route::get('/cart/empty', [CartController::class, 'empty'])->name('emptyCart');
 
 require __DIR__.'/auth.php';
