@@ -22,6 +22,9 @@
 
         <!-- Icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        @section('scripts')
+        {!! NoCaptcha::renderJs() !!}
+        @stop
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
@@ -89,6 +92,9 @@
                                 Titre : {!! Form::text('title'); !!}
                                 Commentaire : {!! Form::text('description'); !!}
                                 {!! Form::submit('Envoyer le commentaire'); !!}
+                                <div class="form-group row justify-content">
+                                    {!! NoCaptcha::display() !!}
+                                </div>
                             {!! Form::close() !!}
                             @else
                                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Se connecter pour écrire un commentaire</a>
@@ -105,5 +111,6 @@
                 </div>
             </div>
         </div>
+        @yield('scripts')
     </body>
 </html>
