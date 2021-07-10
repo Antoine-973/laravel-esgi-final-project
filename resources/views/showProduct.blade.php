@@ -60,7 +60,13 @@
                             <h5 class="card-title">Titre : <br>{{ $product->title }} - {{ $product->subtitle }}</h5><br>
                             <p class="card-text">Description : <br>{{ $product->description}}</p><br>
                             <span> Mise en ligne le : {{ $product->created_at }} <i class="bi bi-clock"></i></span><br><br>
-                            <a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i>Ajouter au panier</a>
+                            @if (Route::has('login'))
+                                @auth
+                                <a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i>Ajouter au panier</a>
+                                @else
+
+                                @endauth
+                            @endif
                         </div>
                     </div>
                 </div>

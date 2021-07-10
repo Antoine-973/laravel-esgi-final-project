@@ -65,7 +65,13 @@
                         <th scope="col">Catégorie</th>
                         <th scope="col">Vendeur</th>
                         <th scope="col">Voir</th>
-                        <th scope="col">Panier</th>
+                        @if (Route::has('login'))
+                            @auth
+                            <th scope="col">Panier</th>
+                            @else
+
+                            @endauth
+                        @endif
                         </tr>
                     </thead>
                     <tbody>
@@ -81,7 +87,12 @@
                         <td>{{ $product->category_id }}</td>
                         <td>{{ $product->user_id }}</td>
                         <td><a href="showProduct/{{ $product->id }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-eye-fill"></i></a></td>
-                        <td><a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i></a></td>
+                        @if (Route::has('login'))
+                            @auth
+                            <td><a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i></a></td>
+                            @else
+                            @endauth
+                        @endif
                         </tr>
                     @endforeach
                     </tbody>
@@ -97,7 +108,13 @@
                         <th scope="col">Catégorie</th>
                         <th scope="col">Vendeur</th>
                         <th scope="col">Voir</th>
-                        <th scope="col">Panier</th>
+                        @if (Route::has('login'))
+                            @auth
+                            <th scope="col">Panier</th>
+                            @else
+
+                            @endauth
+                        @endif
                         </tr>
                     </tfoot>
                     </table>
