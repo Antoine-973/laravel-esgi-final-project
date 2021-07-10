@@ -22,7 +22,7 @@
                                     <p class="card-text">{{ $product->subtitle}}</p>
                                     <span><i class="bi bi-clock"></i> {{ $product->created_at }} </span>
                                     <br><br>
-                                    <div class="btn-actions d-flex justify-content-center"><a href="edit/{{ $product->id }}" class="btn btn-primary">&emsp;Modifier&emsp;<i class="bi bi-pencil-square"></i></a></div>
+                                    <div class="btn-actions d-flex justify-content-center"><a href="edit/{{ $product->id }}" class="btn btn-warning">&emsp;Modifier&emsp;<i class="bi bi-pencil-square"></i></a></div>
                                     <br>
                                     <div class="btn-actions d-flex justify-content-center"><a href="delete/{{ $product->id }}" class="btn btn-danger">&ensp;Supprimer&ensp;<i class="bi bi-trash-fill"></i></a></div>
                                 </div>

@@ -22,14 +22,17 @@
 
         <!-- Icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        @section('scripts')
+        {!! NoCaptcha::renderJs() !!}
+        @stop
     </head>
     <body class="antialiased">
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                 @auth
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
+                        <button type="button" class="btn btn-outline-dark btn-lg"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
+                        <button type="button" class="btn btn-outline-dark btn-lg"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
                             <i class="bi bi-cart4"></i>
                             @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
                                 <span class="badge bg-danger">
@@ -93,8 +96,16 @@
                             @csrf
                                 <span class="input-group-text">Ecrire un commentaire</span>
                                 Titre : {!! Form::text('title'); !!}
-                                Commentaire : {!! Form::text('description'); !!}
-                                {!! Form::submit('Envoyer le commentaire'); !!}
+                                Commentaire : {!! Form::text('description'); !!}<br><br>
+                                <div class="form-group row justify-content">
+                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}
+                                    @error('g-recaptcha-response'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                        </span>
+                                    @enderror
+                                </div><br>
+                                {!! Form::submit('Envoyer le commentaire',array('class' => 'btn btn-success')); !!}
                             {!! Form::close() !!}
                             @else
                                 <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Se connecter pour écrire un commentaire</a>
@@ -111,5 +122,6 @@
                 </div>
             </div>
         </div>
+        @yield('scripts')
     </body>
 </html>
