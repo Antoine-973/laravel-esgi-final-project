@@ -93,7 +93,12 @@
                                 Commentaire : {!! Form::text('description'); !!}
                                 {!! Form::submit('Envoyer le commentaire'); !!}
                                 <div class="form-group row justify-content">
-                                    {!! NoCaptcha::display() !!}
+                                    {!! NoCaptcha::display(['data-theme' => 'dark']) !!}
+                                    @error('g-recaptcha-response'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
                             {!! Form::close() !!}
                             @else
