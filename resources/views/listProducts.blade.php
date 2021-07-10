@@ -28,8 +28,8 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
+                        <button type="button" class="btn btn-outline-dark btn-lg"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
+                        <button type="button" class="btn btn-outline-dark btn-lg"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
                             <i class="bi bi-cart4"></i>
                             @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
                                 <span class="badge bg-danger">

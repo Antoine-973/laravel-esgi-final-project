@@ -6,7 +6,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center">
                     <a href="{{ route('welcome') }}">
-                        <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
+                    <img src="/images/poke.svg" class="" width="40" height="50">
                     </a>
                 </div>
 
@@ -32,7 +32,7 @@
                             <div>{{ Auth::user()->name }}</div>
 
                             <div class="ml-1">
-                                <img src="/images/logo.jpg" class="" width="40" height="50">
+                                <img src="/images/dresseur.svg" class="" width="40" height="50">
                             </div>
                         </button>
                     </x-slot>
