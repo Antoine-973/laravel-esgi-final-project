@@ -19,8 +19,7 @@ class HomeController extends Controller
     public function listProducts()
     {
         $products = Product::all();
-        $users = User::all();
-        return view('listProducts', ['products'=>$products, 'users'=>$users]);
+        return view('listProducts', ['products'=>$products]);
     }
 
     public function showProduct($id)

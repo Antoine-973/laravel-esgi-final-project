@@ -21,6 +21,9 @@
                     <x-nav-link :href="route('create')">
                         {{ __('Vendre') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('cart')">
+                        {{ __('Panier') }}
+                    </x-nav-link>
                 </div>
             </div>
 

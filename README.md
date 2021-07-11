@@ -1,6 +1,10 @@
 ## [ESGI] Projet Laravel - Site de vente de Pokémon ##
 
-**Site de vente POKE-EBAY** est un projet développé dans le cadre du module Laravel.
+**Site de vente POKE-EBAY** est un projet développé dans le cadre du module Laravel par :
+* SAUNIER Antoine
+* MOHINDO Christian
+* INTHASAKUBOL Calvin
+* RASOANIRAHINA Prado
 
 ### Installation ###
 
@@ -27,3 +31,12 @@ Dans un terminal, exécuter les commandes suivantes :
 
 Dans un terminal, exécuter la commande suivante :
 * taper `php artisan serve`, le service web sera accessible depuis l'adresse http://localhost:8000/.
+
+### Package utilisés ###
+
+Pour nous aider dans le développement du projet, nous avons utilisé :
+* laravel/ui pour générer l'authentification.
+* bootstrap.
+* cocur/slugify pour créer des slug.
+* anhskohbo/no-captcha pour le système de captcha Google.
+* darryldecode/cart pour l'implémentation d'un panier d'achat.

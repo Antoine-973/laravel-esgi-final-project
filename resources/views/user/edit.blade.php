@@ -14,12 +14,12 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                 {!! Form::open(['route' => 'update', 'files' => true]) !!}
                     @csrf
-                    Titre : {!! Form::text('title',['placeholder'=>'$product->title']); !!}<br><br>
-                    Sous titre : {!! Form::text('subtitle',$product->subtitle); !!}<br><br>
+                    Nom du Pokémon : {!! Form::text('title',['placeholder'=>'$product->title']); !!}<br><br>
+                    Type : {!! Form::select('category_id', $categories); !!}<br><br>
+                    Etat de vente : {!! Form::text('subtitle',$product->subtitle); !!}<br><br>
                     Description : {!! Form::text('description',$product->description); !!}<br><br>
                     Image : {!! Form::file('image',$product->image); !!}<br><br>
                     Prix : {!! Form::number('price', 'price'); !!}<br><br>
-                    Catégorie : {!! Form::select('category_id', $categories); !!}<br><br>
                         <br><br>
                         <button type="submit" class="btn btn-lg btn-primary">Vendre l'article</button>
                 {!! Form::close() !!}
