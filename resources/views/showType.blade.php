@@ -56,15 +56,15 @@
             <div class="container">
                 <table class="table table-hover">
                 <thead>
-                    <tr>
+                <tr>
                     <th scope="col">#</th>
                     <th scope="col">Photo</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Sous-titre</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">État</th>
                     <th scope="col">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Prix</th>
-                    <th scope="col">Catégorie</th>
+                    <th scope="col">Types</th>
                     <th scope="col">Vendeur</th>
                     <th scope="col">Voir</th>
                     @if (Route::has('login'))
@@ -101,15 +101,15 @@
                 @endforeach
                 </tbody>
                 <tfoot>
-                    <tr>
+                <tr>
                     <th scope="col">#</th>
                     <th scope="col">Photo</th>
-                    <th scope="col">Titre</th>
-                    <th scope="col">Sous-titre</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">État</th>
                     <th scope="col">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Prix</th>
-                    <th scope="col">Catégorie</th>
+                    <th scope="col">Type</th>
                     <th scope="col">Vendeur</th>
                     <th scope="col">Voir</th>
                     @if (Route::has('login'))

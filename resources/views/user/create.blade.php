@@ -17,7 +17,7 @@
                     Nom du Pokémon : {!! Form::text('title'); !!}<br><br>
                     Type : {!! Form::select('category_id', $categories); !!}<br><br>
                     Son état : {!! Form::text('subtitle'); !!}<br><br>
-                    Description : {!! Form::text('description'); !!}<br><br>
+                    Description : {!! Form::textarea('description'); !!}<br><br>
                     Image : {!! Form::file('image'); !!}<br><br>
                     Prix : {!! Form::number('price', 'price'); !!}<br><br>
                         <br><br>

@@ -50,6 +50,7 @@ class UserController extends Controller
         $product->subtitle = $request->input('subtitle');
         $product->slug = $slugify->slugify($product->title);
         $product->description = $request->input('description');
+        $product->price = $request->input('price');
         $product->category_id = $request->category_id;
         $product->user_id = Auth::user()->id;
         
