@@ -80,7 +80,7 @@
                 @foreach($productByType as $product)
                     <tr>
                     <th scope="row">{{ $product->id }}</th>
-                    <td><img class="card-img-top" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
+                    <td><img class="img-thumbnail" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
                     <td>{{ $product->title }}</td>
                     <td>{{ $product->subtitle }}</td>
                     <td>{{ $product->description }}</td>
@@ -124,7 +124,7 @@
                 </table>
             </div>
             <div class="flex justify-center text-center">
-                <a href="{{ route('welcome') }}" type="button" class="btn btn-primary"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
+                <a href="{{ route('welcome') }}" type="button" class="btn btn-dark btn-lg"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
             </div>
         </div>
     </body>

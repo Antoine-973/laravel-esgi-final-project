@@ -26,7 +26,7 @@
                         <tbody>
                         @foreach(\Cart::session(Auth::user()->id)->getContent() as $product)
                             <tr>
-                                <td><img class="card-img-top" src="../storage/products/{{ $product->model->user_id }}/{{ $product->model->image }}" alt="card image"></td>
+                                <td><img class="img-thumbnail" src="../storage/products/{{ $product->model->user_id }}/{{ $product->model->image }}" alt="card image"></td>
                                 <td>{{ $product->model->title }}</td>
                                 <td>{{ $product->model->price }}$</td>
                                 <td>
@@ -46,7 +46,7 @@
                         </tfoot>
                     </table>
                     <div class="d-flex justify-content-center">
-                        <a href="{{ route('emptyCart') }}" type="button" class="btn btn-block btn-light"><i class="bi bi-trash"></i> Vider le panier <i class="bi bi-trash"></i></a>
+                        <a href="{{ route('emptyCart') }}" type="button" class="btn btn-block btn-lg  btn-light"><i class="bi bi-trash"></i> Vider le panier <i class="bi bi-trash"></i></a>
                     </div>
                     @php 
                         $taxe = \Cart::getTotal() / 7;
@@ -56,7 +56,7 @@
                         Sous total : {{ \Cart::getSubtotal() }} euros <br><br>
                         Taxe : {{ $rounded }} euros <br><br>
                         Total : {{ \Cart::getTotal() + $rounded }} euros <br><br><br>
-                        <a href="{{ route('emptyCart') }}" type="button" class="btn btn-outline-success"><i class="bi bi-patch-check-fill"></i>Acheter</a>
+                        <a href="{{ route('emptyCart') }}" type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-patch-check-fill"></i>Acheter</a>
                     </p>
                 </div>
                 @else

@@ -11,6 +11,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <!-- Icon -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.3/css/all.css">
+
         @section('scripts')
         {!! NoCaptcha::renderJs() !!}
         @stop
@@ -49,23 +51,28 @@
             </ul>
         </nav>
         <div class="container">
-            <div class="container">
-                <div class="card" style="width: 80rem;">
-                    <div class="text-center">
-                        <img class="rounded"  style="width: 20rem;" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
-                    </div>
-                    <div class="card-body">
-                        <h4>Voici l'article de {{ $product->user->name }}</h4>
-                        <h5 class="card-title"><br>{{ $product->title }} - {{ $product->subtitle }}</h5><br>
-                        <p class="card-text">Description : <br>{{ $product->description}}</p><br>
-                        <span> Mise en ligne le : {{ $product->created_at }} <i class="bi bi-clock"></i></span><br><br>
-                        @if (Route::has('login'))
-                            @auth
-                            <a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-bag-check"></i>Ajouter au panier</a>
-                            @else
+            <div class="row">
+                <div class="col-6 text-center">
+                    <img class="rounded"  style="width: 20rem;" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image">
+                </div>
+                <div class="col-6 d-flex justify-content-center text-center">
+                    <div class="card">
+                        <h4 class="card-header">Voici l'article de {{ $product->user->name }}</h4>
+                        <div class="card-body">
+                            <h5 class="card-title"><br>{{ $product->title }} <i class="{{ $product->category->icon }}"></i></h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{ $product->subtitle }}</h6>
+                            <p class="card-text">
+                                Description : <br>{{ $product->description}}<br><br>
+                                Mise en ligne le : {{ $product->created_at }} <i class="bi bi-clock"></i>
+                            </p>
+                            @if (Route::has('login'))
+                                @auth
+                                <a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-success"><i class="bi bi-bag-check"></i> Ajouter au panier <i class="bi bi-bag-check"></i></a>
+                                @else
 
-                            @endauth
-                        @endif
+                                @endauth
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
@@ -76,11 +83,15 @@
                     </div>
                     <ul class="list-group list-group-flush">
                     @foreach($comments as $comment)
-                    <li class="list-group-item">Commentaire de {{ isset($comment->user->name) ? $comment->user->name : "" }}<br><br>
-                    {{ $comment->title }} <br> {{ $comment->description }} <br><br>
-                    Le {{ $comment->created_at }} <i class="bi bi-clock"></i>
-                    </li>
-                @endforeach
+                        <li class="list-group-item">
+                            <p class="alert alert-dark">
+                                Commentaire de {{ isset($comment->user->name) ? $comment->user->name : "" }}<br><br>
+                                {{ $comment->title }}<br><br>
+                                {{ $comment->description }}
+                            </p>
+                            Le {{ $comment->created_at }} <i class="bi bi-clock"></i>
+                        </li>
+                    @endforeach
                     </ul>
                 </div>
             </div>
@@ -104,17 +115,20 @@
                             </div>
                         {!! Form::close() !!}
                         @else
-                            <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Se connecter pour écrire un commentaire</a>
-
+                        <div class="text-center">
+                            <p>Vous devez être connecté pour écrire un commentaire.</p><br>
+                            <a href="{{ route('login') }}" class="btn btn-outline-dark">Se connecter</a>
                             @if (Route::has('register'))
-                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">S'inscrire</a>
+                            <a href="{{ route('register') }}" class="btn btn-outline-dark">S'inscrire</a>
                             @endif
+                        </div>
                         @endauth
                     </div>
                 @endif
             </div>
             <div class="flex justify-center">
-                <a href="{{ route('listProducts') }}" type="button" class="btn btn-outline btn-dark"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
+                <br><br>
+                <a href="{{ route('listProducts') }}" type="button" class="btn btn-dark btn-lg"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
             </div>
         </div>
         @yield('scripts')
