@@ -40,3 +40,9 @@ Pour nous aider dans le développement du projet, nous avons utilisé :
 * cocur/slugify pour créer des slug.
 * anhskohbo/no-captcha pour le système de captcha Google.
 * darryldecode/cart pour l'implémentation d'un panier d'achat.
+
+### Test de paiement ###
+* Numéro de la carte - 4242 4242 4242 4242
+* EXP - 12/32
+* CVV - 123
+* ZIP - 12345

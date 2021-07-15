@@ -5,6 +5,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PaymentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +42,6 @@ Route::get('/cart/store/{id}', [CartController::class, 'store'])->name('storeCar
 Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('destroyCart');
 Route::get('/cart/empty', [CartController::class, 'empty'])->name('emptyCart');
 
+Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
+Route::post('/payment', [PaymentController::class, 'afterPayment'])->name('afterPayment');
 require __DIR__.'/auth.php';

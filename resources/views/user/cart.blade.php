@@ -56,7 +56,7 @@
                         Sous total : {{ \Cart::getSubtotal() }} euros <br><br>
                         Taxe : {{ $rounded }} euros <br><br>
                         Total : {{ \Cart::getTotal() + $rounded }} euros <br><br><br>
-                        <a href="{{ route('emptyCart') }}" type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-patch-check-fill"></i>Acheter</a>
+                        <a href="{{ route('payment') }}" type="button" class="btn btn-outline-success btn-lg"><i class="bi bi-patch-check-fill"></i>Acheter</a>
                     </p>
                 </div>
                 @else
