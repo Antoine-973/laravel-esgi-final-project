@@ -7,25 +7,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
-                <div class="order-details my-5">
-                    <h3>Détails de la commande</h3>
-                    <table class="table table-striped">
-                        <tbody>
-                            <tr>
-                                <td><img class="cart-img" src="" /> </td>
-                                <td><p><b>Titre du cours</b></p><p>Par Nom du formateur</p></td>
-                                <td class="text-right">19,99 €</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
                 <div class="card">
                     <form action="{{route('afterPayment')}}"  method="post" id="payment-form">
                         @csrf                    
                         <div class="form-group">
                             <div class="card-header">
                                 <label for="card-element">
-                                    Entrez votre carte de crédit
+                                    Entrez les informations de votre carte de crédit :
                                 </label>
                             </div>
                             <div class="card-body">
@@ -42,6 +30,19 @@
                         </div>
                     </form>
                 </div>
+                <div class="order-details my-5">
+                    <h3>Détails de la commande</h3>
+                    <table class="table table-striped">
+                        <tbody>
+                            @foreach(\Cart::session(Auth::user()->id)->getContent() as $product)
+                            <tr>
+                                <td><p><b>{{ $product->name }} </b></p><p>Vendu par {{ $product->model->user->name }} </p></td>
+                                <td class="text-right">{{ $product->price }} €</td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="col-lg-4">
                 <div class="card">
@@ -51,17 +52,17 @@
                     <div class="card-body">
                         <div class="d-flex justify-content-between">
                             <p>Prix d'origine:</p>  
-                            <p>19,99</p>
+                            <p>{{ $subtotal }} €</p>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <p>Taxe:</p>  
-                            <p>3,00</p>
+                            <p>{{ $roundedTaxe }} €</p>
                         </div>
                         <hr>
                         <div class="d-flex justify-content-between">
                             <p><b>Prix total:</b></p>  
-                            <p><b>22,99</b></p>
+                            <p><b>{{ $total }} €</b></p>
                         </div>
                         <small class="card-text">En passant votre commande, vous acceptez les conditions générales de vente de POKE-EBAY. Veuillez consulter notre notice protection de vos informations personnelles, notre notice cookies et notre notice annonces pubicitaires basées sur vos centres d'intérêt.</small>
                     </div>
