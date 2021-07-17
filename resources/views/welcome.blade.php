@@ -4,7 +4,10 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Le bon angle</title>
+        <title>POK-EBAY</title>
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.3/css/all.css">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,13 +27,21 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <button type="button" class="btn btn-info btn-md"><a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 underline">Dashboard</a></button>
+                @auth
+                        <button type="button" class="btn btn-outline-dark btn-lg"><a href="{{ url('/dashboard') }}" class="text-lg text-gray-700 underline"><i class="bi bi-speedometer2"></i> Dashboard</a></button>
+                        <button type="button" class="btn btn-outline-dark btn-lg"><a href="{{ route('cart') }}" class="text-lg text-gray-700 underline">
+                            <i class="bi bi-cart4"></i>
+                            @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
+                                <span class="badge bg-danger">
+                                    {{ count(\Cart::session(Auth::user()->id)->getContent()) }}
+                                </span>
+                            @endif
+                    </a></button>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 underline">Connexion</a>
+                        <a href="{{ route('login') }}" class="text-lg text-gray-700 underline">Connexion</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Inscription</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-lg text-gray-700 underline">Inscription</a>
                         @endif
                     @endauth
                 </div>
@@ -38,45 +49,27 @@
 
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
                 <div class="flex justify-center">
-                    <img src="/images/logo.png" class="img-thumbnail">
+                    <img src="/images/logo.jpg" class="img-thumbnail">
                 </div>
                 <div class="flex justify-center">
-                    <h4>Avec Lebonangle, trouvez la bonne affaire, réalisez-la bonne vente pour vos produits !</h4>
+                    <h1>Avec Pok-Ebay, trouvez la bonne affaire, réalisez-la bonne vente pour vos produits ! ACHETEZ LES TOUS !</h1>
                 </div>
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+                    <div class="grid grid-cols-1 md:grid-cols-6">
+                    @foreach($categories as $category)
+                        <div class="p-2">
                             <div class="flex items-center">
-                                <img src="/images/woman.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Femmes</a></div>
+                                <i class="{{ $category->icon }}"></i>
+                                <div class="ml-2 text-lg leading-7 font-semibold"><a href="showType/{{ $category->id }}" class="underline text-gray-900 dark:text-white">{{ $category->name }}</a></div>
                             </div>
                         </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/man.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Hommes</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <img src="/images/kid.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Enfants</a></div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <img src="/images/house.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="" class="underline text-gray-900 dark:text-white">Home</a></div>
-                            </div>
-                        </div>
+                    @endforeach
                     </div>
                     <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
+                            <div class="d-flex justify-content-center">
                                 <img src="/images/all.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les articles en ventes</a></div>
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les Pokemons en ventes </a></div>&emsp;
+                                <img src="/images/all.png" class="img-thumbnail">
                             </div>
                         </div>
                 </div>

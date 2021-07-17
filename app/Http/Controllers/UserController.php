@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Payment;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $id = Auth::user()->id;
+        $total_gain = Payment::where('user_id', $id)->sum('seller_part');
+        return view('dashboard', ['total_gain'=>$total_gain]);
     }
 
     /**
@@ -50,6 +53,7 @@ class UserController extends Controller
         $product->subtitle = $request->input('subtitle');
         $product->slug = $slugify->slugify($product->title);
         $product->description = $request->input('description');
+        $product->price = $request->input('price');
         $product->category_id = $request->category_id;
         $product->user_id = Auth::user()->id;
         
@@ -133,5 +137,21 @@ class UserController extends Controller
         $product = Product::find($id);
         $product->delete();
         return redirect()->route('dashboard');
+    }
+
+    public function createComment(Request $request)
+    {
+        $slugify = new Slugify();
+        
+        $comment = new Product();
+        $comment->title = $request->input('title');
+        $comment->slug = $slugify->slugify($comment->title);
+        $comment->description = $request->input('description');
+        $comment->product_id = $request->product_id;
+        $comment->user_id = Auth::user()->id;
+        var_dump($comment->product_id);
+        die;
+        //$comment->save();
+        return back();
     }
 }

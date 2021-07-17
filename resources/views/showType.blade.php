@@ -4,7 +4,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>POK-EBAY</title>
+        <title>Le bon angle</title>
+
+        <!-- Icon -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.15.3/css/all.css">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -45,15 +49,14 @@
                 @endif
             </ul>
         </nav>
-
-        <div class="container">
+        <div class="">
             <div class="flex justify-center text-center">
-                <h2>Voici la liste de tous les Pokemons en vente :</h2>
+                <h3>Voici la liste des Pokemons type <i class="{{ $category->icon }}"></i></h3>
             </div>
-            <div class="mt-12 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
+            <div class="container">
                 <table class="table table-hover">
                 <thead>
-                    <tr>
+                <tr>
                     <th scope="col">#</th>
                     <th scope="col">Photo</th>
                     <th scope="col">Nom</th>
@@ -61,7 +64,7 @@
                     <th scope="col">Description</th>
                     <th scope="col">Date</th>
                     <th scope="col">Prix</th>
-                    <th scope="col">Type</th>
+                    <th scope="col">Types</th>
                     <th scope="col">Vendeur</th>
                     <th scope="col">Voir</th>
                     @if (Route::has('login'))
@@ -74,7 +77,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($products as $product)
+                @foreach($productByType as $product)
                     <tr>
                     <th scope="row">{{ $product->id }}</th>
                     <td><img class="img-thumbnail" src="/storage/products/{{ $product->user_id }}/{{ $product->image }}" alt="card image"></td>
@@ -85,14 +88,16 @@
                     <td>{{ $product->price }}$</td>
                     <td>{{ isset($product->category->name) ? $product->category->name : "" }}</td>
                     <td>{{ isset($product->user->name) ? $product->user->name : "" }}</td>
-                    <td><a href="showProduct/{{ $product->id }}" type="button" class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a></td>
+                    <td><a href="{{ route('showProduct',$product->id) }}" type="button" class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a></td>
                     @if (Route::has('login'))
                         @auth
                         <td><a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-info"><i class="bi bi-bag-check"></i></a></td>
                         @else
                         @endauth
                     @endif
+                    
                     </tr>
+                    <tr>
                 @endforeach
                 </tbody>
                 <tfoot>
@@ -119,7 +124,7 @@
                 </table>
             </div>
             <div class="flex justify-center text-center">
-                <a href="{{ route('welcome') }}" type="button" class="btn btn-dark btn-lg"><i class="bi bi-arrow-left-square-fill"></i> Retour à l'accueil.</a>
+                <a href="{{ route('welcome') }}" type="button" class="btn btn-dark btn-lg"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
             </div>
         </div>
     </body>

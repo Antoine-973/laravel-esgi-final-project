@@ -51,4 +51,12 @@ class AuthenticatedSessionController extends Controller
 
         return redirect('/');
     }
+
+    protected function validateLogin(Request $request)
+    {
+        $request->validate([
+            $this->username() => 'required|string',
+            'password' => 'required|string',
+        ]);
+    }
 }

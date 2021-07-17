@@ -17,33 +17,40 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
+
         $user = new User();
-        $user->name = Str::random(10);
-        $user->email = Str::random(10).'@gmail.com';
+        $user->name = 'Sacha DuBourgPallette';
+        $user->email = 'sacha'.Str::random(2).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
-        $user->email = Str::random(10).'@gmail.com';
+        $user->name = 'Red';
+        $user->email = 'rededredemption'.Str::random(2).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
-        $user->email = Str::random(10).'@gmail.com';
+        $user->name = 'Calvin LeTerrible';
+        $user->email = 'calcal'.Str::random(2).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
-        $user->email = Str::random(10).'@gmail.com';
+        $user->name = 'Antoine LeCollectionneur';
+        $user->email = 'ant.man'.Str::random(2).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 
         $user = new User();
-        $user->name = Str::random(10);
-        $user->email = Str::random(10).'@gmail.com';
+        $user->name = 'Christian LeSoigneurDePokemon';
+        $user->email = 'jaimelespokemons'.Str::random(2).'@gmail.com';
+        $user->password = Hash::make('password');
+        $user->save();
+
+        $user = new User();
+        $user->name = 'Prado LeMaitrePokemon';
+        $user->email = 'jesuisfort'.Str::random(2).'@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
     }

@@ -44,4 +44,7 @@ class User extends Authenticatable
     public function products() {
         return $this->hasMany('App\Models\Product');
     }
+    public function payments() {
+        return $this->hasMany('App\Models\Payment');
+    }
 }

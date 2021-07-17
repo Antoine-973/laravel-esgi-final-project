@@ -3,17 +3,16 @@
 namespace App\Models;
 
 use App\Models\User;
-use App\Models\Category;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class Comment extends Model
 {
     use HasFactory;
-
-    public function category()
+    public function product()
     {
-        return $this->belongsTo(Category::class);
+        return $this->belongsTo(Product::class);
     }
 
     public function user()
