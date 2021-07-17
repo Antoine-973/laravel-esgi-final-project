@@ -40,6 +40,7 @@ Pour nous aider dans le développement du projet, nous avons utilisé :
 * cocur/slugify pour créer des slug.
 * anhskohbo/no-captcha pour le système de captcha Google.
 * darryldecode/cart pour l'implémentation d'un panier d'achat.
+* stripe/stripe-php pour le système de paiement en ligne.
 
 ### Test de paiement ###
 * Numéro de la carte - 4242 4242 4242 4242
