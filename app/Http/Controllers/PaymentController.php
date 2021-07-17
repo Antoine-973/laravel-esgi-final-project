@@ -37,6 +37,7 @@ class PaymentController extends Controller
                 $pokebay_part = $this->paymentManager->getPokebayPart($itemPrice);
                 Payment::create([
                     'product_id'=> $item->model->id,
+                    'user_id'=> $item->model->user_id,
                     'amount'=> $total,
                     'seller_part'=> $seller_part,
                     'pokebay_part'=>$pokebay_part,

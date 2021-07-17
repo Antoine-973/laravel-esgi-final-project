@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Payment;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,7 +22,9 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        $id = Auth::user()->id;
+        $total_gain = Payment::where('user_id', $id)->sum('seller_part');
+        return view('dashboard', ['total_gain'=>$total_gain]);
     }
 
     /**

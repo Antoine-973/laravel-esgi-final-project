@@ -24,12 +24,7 @@ Route::get('/listProducts', [HomeController::class, 'listProducts'])->name('list
 Route::get('/showProduct/{id}', [HomeController::class, 'showProduct'])->name('showProduct');
 Route::get('/showType/{id}', [HomeController::class, 'showType'])->name('showType');
 
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
-
+Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::get('/create', [UserController::class, 'create'])->name('create');
 Route::post('/store', [UserController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
