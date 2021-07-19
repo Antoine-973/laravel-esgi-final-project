@@ -28,7 +28,7 @@ Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth'])
 Route::get('/create', [UserController::class, 'create'])->name('create');
 Route::post('/store', [UserController::class, 'store'])->name('store');
 Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
-Route::get('/update/{id}', [UserController::class, 'update'])->name('update');
+Route::post('/update/{id}', [UserController::class, 'update'])->name('update');
 Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
 Route::post('/createComment', [UserController::class, 'createComment'])->name('createComment');
 
