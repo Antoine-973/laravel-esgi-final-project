@@ -49,6 +49,19 @@
                                     <input type="text" name="price" value="{{ $product->price }}" class="form-control">
                                 </div>
                             </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Photo du Pokémon :</strong>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <img src="/storage/products/{{ Auth::user()->id }}/{{ $product->image }}"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="file" name="image"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
                                 <button type="submit" class="btn btn-success btn-lg">Update</button>
                             </div>
