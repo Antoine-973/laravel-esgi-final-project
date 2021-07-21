@@ -20,6 +20,7 @@
                                 <th scope="col">Photo du Pokemon</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Prix</th>
+                                <th scope="col">Quantité</th>
                                 <th scope="col"></th>
                             </tr>
                         </thead>
@@ -29,6 +30,7 @@
                                 <td><img class="img-thumbnail" src="../storage/products/{{ $product->model->user_id }}/{{ $product->model->image }}" alt="card image"></td>
                                 <td>{{ $product->model->title }}</td>
                                 <td>{{ $product->model->price }}$</td>
+                                <td>{{ $product->quantity  }}</td>
                                 <td>
                                     <a href="{{ route('destroyCart', $product->id) }}" type="button" class="btn btn-outline-secondary"><i class="bi bi-hourglass-bottom"></i></a>
                                     <a href="{{ route('destroyCart', $product->id) }}" type="button" class="btn btn-outline-danger"><i class="bi bi-trash-fill"></i></a>
@@ -41,6 +43,7 @@
                                 <th scope="col">Photo du Pokemon</th>
                                 <th scope="col">Nom</th>
                                 <th scope="col">Prix</th>
+                                <th scope="col">Quantité</th>
                                 <th scope="col"></th>
                             </tr>
                         </tfoot>
