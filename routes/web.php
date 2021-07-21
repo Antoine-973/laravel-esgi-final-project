@@ -26,23 +26,23 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('show
 Route::get('/products', [ProductController::class, 'listProducts'])->name('listProducts');
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/create', [ProductController::class, 'create'])->name('create');
-Route::post('/store', [ProductController::class, 'store'])->name('store');
-Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('edit');
-Route::post('/update/{id}', [ProductController::class, 'update'])->name('update');
-Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('delete');
+Route::get('/create', [ProductController::class, 'create'])->middleware(['auth'])->name('create');
+Route::post('/store', [ProductController::class, 'store'])->middleware(['auth'])->name('store');
+Route::get('/edit/{id}', [ProductController::class, 'edit'])->middleware(['auth'])->name('edit');
+Route::post('/update/{id}', [ProductController::class, 'update'])->middleware(['auth'])->name('update');
+Route::get('/delete/{id}', [ProductController::class, 'destroy'])->middleware(['auth'])->name('delete');
 
-Route::get('/cart', [CartController::class, 'index'])->name('cart');
-Route::get('/cart/store/{id}', [CartController::class, 'store'])->name('storeCart');
-Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->name('destroyCart');
-Route::get('/cart/empty', [CartController::class, 'empty'])->name('emptyCart');
+Route::get('/cart', [CartController::class, 'index'])->middleware(['auth'])->name('cart');
+Route::get('/cart/store/{id}', [CartController::class, 'store'])->middleware(['auth'])->name('storeCart');
+Route::get('/cart/destroy/{id}', [CartController::class, 'destroy'])->middleware(['auth'])->name('destroyCart');
+Route::get('/cart/empty', [CartController::class, 'empty'])->middleware(['auth'])->name('emptyCart');
 
-Route::get('/payment', [PaymentController::class, 'index'])->name('payment');
-Route::post('/payment', [PaymentController::class, 'afterPayment'])->name('afterPayment');
+Route::get('/payment', [PaymentController::class, 'index'])->middleware(['auth'])->name('payment');
+Route::post('/payment', [PaymentController::class, 'afterPayment'])->middleware(['auth'])->name('afterPayment');
 
-Route::post('/create-comment/{id}', [CommentController::class, 'create'])->name('createComment');
-//Route::post('/edit-comment/{comment}', [CommentController::class, 'edit'])->name('editComment');
-//Route::post('/delete-comment/{comment}', [CommentController::class, 'delete'])->name('deleteComment');
+Route::post('/create-comment/{id}', [CommentController::class, 'create'])->middleware(['auth'])->name('createComment');
+//Route::post('/edit-comment/{comment}', [CommentController::class, 'edit'])->middleware(['auth'])->name('editComment');
+//Route::post('/delete-comment/{comment}', [CommentController::class, 'delete'])->middleware(['auth'])->name('deleteComment');
 
 
 require __DIR__.'/auth.php';
