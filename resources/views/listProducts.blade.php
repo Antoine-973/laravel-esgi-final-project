@@ -27,7 +27,7 @@
                             <i class="bi bi-cart4"></i> Votre panier
                             @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
                                 <span class="badge bg-danger">
-                                    {{ count(\Cart::session(Auth::user()->id)->getContent()) }}
+                                    {{ $qty=\Cart::session(Auth::user()->id)->getTotalQuantity() }}
                                 </span>
                             @endif
                         </a>
