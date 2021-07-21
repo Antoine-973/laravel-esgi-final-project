@@ -12,17 +12,61 @@
                     <h4>Que voulez vous modifier ?</h4>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                {!! Form::open(['route' => 'update', 'files' => true]) !!}
+                    <form action="{{ route('update',$product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    Nom du Pokémon : {!! Form::text('title',['placeholder'=>'$product->title']); !!}<br><br>
-                    Type : {!! Form::select('category_id', $categories); !!}<br><br>
-                    Etat de vente : {!! Form::text('subtitle',$product->subtitle); !!}<br><br>
-                    Description : {!! Form::text('description',$product->description); !!}<br><br>
-                    Image : {!! Form::file('image',$product->image); !!}<br><br>
-                    Prix : {!! Form::number('price', 'price'); !!}<br><br>
-                        <br><br>
-                        <button type="submit" class="btn btn-lg btn-primary">Vendre l'article</button>
-                {!! Form::close() !!}
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Nom du Pokémon:</strong>
+                                    <br>{!! Form::text('title', $product->title); !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Type :</strong>
+                                    <select name="category_id" class="form-control">
+                                        @foreach($categories as $category)
+                                            <option value="{{ $category->id }}" {{ $product->category->id == $category->id ? 'selected' : ''}}> {{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>État de vente :</strong>
+                                    <br>{!! Form::text('subtitle', $product->subtitle); !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Description :</strong>
+                                    <br>{!! Form::textarea('description', $product->description); !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Prix :</strong>
+                                    <br>{!! Form::number('price', $product->price); !!}
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="form-group">
+                                    <strong>Photo du Pokémon :</strong>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <img src="/storage/products/{{ Auth::user()->id }}/{{ $product->image }}"/>
+                                        </div>
+                                        <div class="col-6">
+                                            <input type="file" name="image"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                <button type="submit" class="btn btn-success btn-lg">Mettre à jour</button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@
                             <i class="bi bi-cart4"></i> Votre panier
                             @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
                                 <span class="badge bg-danger">
-                                    {{ count(\Cart::session(Auth::user()->id)->getContent()) }}
+                                    {{ $qty=\Cart::session(Auth::user()->id)->getTotalQuantity() }}
                                 </span>
                             @endif
                         </a>
@@ -85,7 +85,7 @@
                     <td>{{ $product->price }}$</td>
                     <td>{{ isset($product->category->name) ? $product->category->name : "" }}</td>
                     <td>{{ isset($product->user->name) ? $product->user->name : "" }}</td>
-                    <td><a href="showProduct/{{ $product->id }}" type="button" class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a></td>
+                    <td><a href="product/{{ $product->id }}" type="button" class="btn btn-outline-info"><i class="bi bi-eye-fill"></i></a></td>
                     @if (Route::has('login'))
                         @auth
                         <td><a href="{{ route('storeCart', $product->id) }}" type="button" class="btn btn-outline-info"><i class="bi bi-bag-check"></i></a></td>

@@ -16,19 +16,6 @@ class HomeController extends Controller
         return view('welcome', ['categories'=>$categories]);
     }
 
-    public function listProducts()
-    {
-        $products = Product::all();
-        return view('listProducts', ['products'=>$products]);
-    }
-
-    public function showProduct($id)
-    {
-        $product = Product::find($id);
-        $comments = Comment::where('product_id', $id)->orderBy('created_at')->get();
-        return view('showProduct', ['product' => $product, 'comments' => $comments]);
-    }
-
     public function showType($id)
     {
         $category = Category::find($id);

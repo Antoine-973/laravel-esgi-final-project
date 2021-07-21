@@ -33,7 +33,7 @@
                             <i class="bi bi-cart4"></i>
                             @if(count(\Cart::session(Auth::user()->id)->getContent()) > 0)
                                 <span class="badge bg-danger">
-                                    {{ count(\Cart::session(Auth::user()->id)->getContent()) }}
+                                    {{ $qty=\Cart::session(Auth::user()->id)->getTotalQuantity() }}
                                 </span>
                             @endif
                     </a></button>
@@ -68,7 +68,7 @@
                     <div class="p-12 border-t border-gray-200 dark:border-gray-700 md:border-l">
                             <div class="d-flex justify-content-center">
                                 <img src="/images/all.png" class="img-thumbnail">
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="listProducts" class="underline text-gray-900 dark:text-white">Voir tout les Pokemons en ventes </a></div>&emsp;
+                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="products" class="underline text-gray-900 dark:text-white">Voir tout les Pokemons en ventes </a></div>&emsp;
                                 <img src="/images/all.png" class="img-thumbnail">
                             </div>
                         </div>
