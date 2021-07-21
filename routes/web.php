@@ -26,11 +26,11 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('show
 Route::get('/products', [ProductController::class, 'listProducts'])->name('listProducts');
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth'])->name('dashboard');
-Route::get('/create', [UserController::class, 'create'])->name('create');
-Route::post('/store', [UserController::class, 'store'])->name('store');
-Route::get('/edit/{id}', [UserController::class, 'edit'])->name('edit');
-Route::post('/update/{id}', [UserController::class, 'update'])->name('update');
-Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('delete');
+Route::get('/create', [ProductController::class, 'create'])->name('create');
+Route::post('/store', [ProductController::class, 'store'])->name('store');
+Route::get('/edit/{id}', [ProductController::class, 'edit'])->name('edit');
+Route::post('/update/{id}', [ProductController::class, 'update'])->name('update');
+Route::get('/delete/{id}', [ProductController::class, 'destroy'])->name('delete');
 
 Route::get('/cart', [CartController::class, 'index'])->name('cart');
 Route::get('/cart/store/{id}', [CartController::class, 'store'])->name('storeCart');
