@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use Illuminate\Http\Request;
-use App\Models\Product;
-use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -15,7 +15,7 @@ class CommentController extends Controller
      */
     public function index()
     {
-        //
+
     }
 
     /**
@@ -23,64 +23,17 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $comment = new Comment();
+        $comment->title = $request->title;
+        $comment->description = $request->description;
+        $comment->product_id = $request->description;
+        $comment->product_id = $request->id;
+        $comment->user_id = Auth::user()->id;
+
+        $comment->save();
+        return redirect()->route('showProduct', [$request->id]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

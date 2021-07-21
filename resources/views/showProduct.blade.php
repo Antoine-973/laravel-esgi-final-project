@@ -99,7 +99,7 @@
                 @if (Route::has('login'))
                     <div class="border border-dark">
                         @auth
-                        {!! Form::open(['route' => 'createComment']) !!}
+                        {!! Form::open(['route' => ['createComment', $product->id]]) !!}
                         @csrf
                             <span class="input-group-text">Ecrire un commentaire</span>
                             Titre : {!! Form::text('title'); !!}
@@ -121,6 +121,7 @@
                             @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="btn btn-outline-dark">S'inscrire</a>
                             @endif
+
                         </div>
                         @endauth
                     </div>
