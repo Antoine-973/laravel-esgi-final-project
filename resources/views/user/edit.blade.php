@@ -18,7 +18,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Nom du Pokémon:</strong>
-                                    <input type="text" name="title" value="{{ $product->title }}" class="form-control">
+                                    <br>{!! Form::text('title', $product->title); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -34,19 +34,19 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>État de vente :</strong>
-                                    <input type="text" name="subtitle" value="{{ $product->subtitle }}" class="form-control">
+                                    <br>{!! Form::text('subtitle', $product->subtitle); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Description :</strong>
-                                    <textarea class="form-control" style="height:150px" name="description">{{ $product->description }}</textarea>
+                                    <br>{!! Form::textarea('description', $product->description); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Prix :</strong>
-                                    <input type="text" name="price" value="{{ $product->price }}" class="form-control">
+                                    <br>{!! Form::number('price', $product->price); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
