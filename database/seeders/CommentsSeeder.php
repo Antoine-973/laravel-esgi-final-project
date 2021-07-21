@@ -3,11 +3,9 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Category;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Comment;
-use Cocur\Slugify\Slugify;
 
 class CommentsSeeder extends Seeder
 {
@@ -18,8 +16,329 @@ class CommentsSeeder extends Seeder
      */
     public function run()
     {
-        $slugify = new Slugify();
+        $data = $this->getSeeds();
+        foreach ($data as $item) {
+            $comment = new Comment();
+            $comment->title = $item['title'];
+            $comment->description = $item['description'];
+            $comment->product_id = Product::all()->random(1)->first()->id;
+            $comment->user_id = User::all()->random(1)->first()->id;
+            $comment->save();
+        }
+    }
 
+    private function getSeeds()
+    {
+        return [
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je le voudrais dans mon équipe pour le ménage"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Trop chere",
+                'description' => "Prix trop élevé pour un simple Pokemon"
+            ],
+            [
+                'title' => "Je le prend",
+                'description' => "Je le veux"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Nourriture",
+                'description' => "Il mange beeaucoup ?"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Achat",
+                'description' => "Je voudrais l'acheter"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+            [
+                'title' => "Combat",
+                'description' => "Sait-il se battre à mort ?"
+            ],
+        ];
         $comment = new Comment();
         $comment->title = "Achat";
         $comment->slug = $slugify->slugify($comment->title);
