@@ -12,7 +12,7 @@
                     <h4>Que voulez vous modifier ?</h4>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <form action="{{ route('update',$product->id) }}" method="PUT">
+                    <form action="{{ route('update',$product->id) }}" method="POST" enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -63,7 +63,7 @@
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                                <button type="submit" class="btn btn-success btn-lg">Update</button>
+                                <button type="submit" class="btn btn-success btn-lg">Mettre à jour</button>
                             </div>
                         </div>
                     </form>
