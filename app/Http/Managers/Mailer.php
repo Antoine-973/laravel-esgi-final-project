@@ -24,7 +24,7 @@ class Mailer
 
             // Create a message
             $message = (new Swift_Message($subject))
-                ->setFrom([env('MAIL_EMAIL') => env('MAIL_USERNAME')])
+                ->setFrom([env('MAIL_USERNAME') => env('MAIL_NAME')])
                 ->setTo([$mailTo])
                 ->setBody($body)
                 ->setContentType('text/html')
