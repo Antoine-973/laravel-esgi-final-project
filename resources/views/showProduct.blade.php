@@ -130,8 +130,15 @@
             <div class="flex justify-center">
                 <br><br>
                 <a href="{{ route('listProducts') }}" type="button" class="btn btn-dark btn-lg"><i class="bi bi-arrow-left-square-fill"></i> Retour à la liste des articles en vente.</a>
+                <br><br>
             </div>
         </div>
         @yield('scripts')
     </body>
+    <footer class="fixed-bottom bg-dark text-center text-lg-start">
+        <div class="text-center text-white p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright:
+            <a class="text-light" href="">Poke-ebay.com</a>
+        </div>
+    </footer>
 </html>
