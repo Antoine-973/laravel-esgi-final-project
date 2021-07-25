@@ -12,17 +12,63 @@
                     <h4>Veuillez décrire le pokemon en vente :</h4>
                 </div>
                 <div class="p-6 bg-white border-b border-gray-200">
-                {!! Form::open(['route' => 'store', 'files' => true]) !!}
-                    @csrf
-                    Nom du Pokémon : {!! Form::text('title'); !!}<br><br>
-                    Type : {!! Form::select('category_id', $categories); !!}<br><br>
-                    Son état : {!! Form::text('subtitle'); !!}<br><br>
-                    Description : {!! Form::textarea('description'); !!}<br><br>
-                    Image : {!! Form::file('image'); !!}<br><br>
-                    Prix : {!! Form::number('price', 'price'); !!}<br><br>
-                        <br><br>
-                        <button type="submit" class="btn btn-lg btn-primary">Vendre l'article</button>
-                {!! Form::close() !!}
+                    @if ($errors->any())
+                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                    <div class="p-6 bg-white border-b border-gray-200">
+                        <form action="{{ route('store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Nom du Pokémon:</strong>
+                                        <br>{!! Form::text('title', null,['required ' => true]); !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Type :</strong>
+                                        <br>{!! Form::select('category_id', $categories); !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>État de vente :</strong>
+                                        <br>{!! Form::select('subtitle', $states); !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Description :</strong>
+                                        <br>{!! Form::textarea('description'); !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Prix :</strong>
+                                        <br>{!! Form::number('price', 0, ['min' => 0, 'required' => true]); !!}
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="form-group">
+                                        <strong>Photo du Pokémon :</strong>
+                                        <div class="row">
+                                            <div class="col-6">
+                                                {!! Form::file('image'); !!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+                                    <button type="submit" class="btn btn-lg btn-primary">Vendre</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

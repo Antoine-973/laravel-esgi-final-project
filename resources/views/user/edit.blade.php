@@ -11,22 +11,30 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <h4>Que voulez vous modifier ?</h4>
                 </div>
-                <div class="p-6 bg-white border-b border-gray-200">
+
+                <div class="p-6 bg-white border-b border-gray-200">@if ($errors->any())
+                        <ul class="mt-3 list-disc list-inside text-sm text-red-600">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
                     <form action="{{ route('update',$product->id) }}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                        @csrf
                         <div class="row">
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Nom du Pokémon:</strong>
-                                    <br>{!! Form::text('title', $product->title); !!}
+                                    <br>{!! Form::text('title', $product->title, ['required ' => true]); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
-                                <div class="form-group">
+                                <div class="form-group w-1/3">
                                     <strong>Type :</strong>
                                     <select name="category_id" class="form-control">
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}" {{ $product->category->id == $category->id ? 'selected' : ''}}> {{ $category->name }}</option>
+                                            <option
+                                                value="{{ $category->id }}" {{ $product->category->id == $category->id ? 'selected' : ''}}> {{ $category->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -34,7 +42,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>État de vente :</strong>
-                                    <br>{!! Form::text('subtitle', $product->subtitle); !!}
+                                    <br>{!! Form::select('subtitle', $states, $product->subtitle); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -46,7 +54,7 @@
                             <div class="col-xs-12 col-sm-12 col-md-12">
                                 <div class="form-group">
                                     <strong>Prix :</strong>
-                                    <br>{!! Form::number('price', $product->price); !!}
+                                    <br>{!! Form::number('price', $product->price, ['min' => 0, 'required' => true]); !!}
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -57,7 +65,7 @@
                                             <img src="/storage/products/{{ Auth::user()->id }}/{{ $product->image }}"/>
                                         </div>
                                         <div class="col-6">
-                                            <input type="file" name="image"/>
+                                            {!! Form::file('image')!!}
                                         </div>
                                     </div>
                                 </div>
