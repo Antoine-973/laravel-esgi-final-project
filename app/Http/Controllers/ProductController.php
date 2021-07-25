@@ -21,15 +21,15 @@ class ProductController extends Controller
 
     public function listProducts()
     {
-        $products = Product::all();
-        return view('listProducts', ['products'=>$products]);
+        $products = Product::all()->sortByDesc('created_at');
+        return view('listProducts', ['products' => $products]);
     }
 
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show(Product $product)
@@ -46,43 +46,62 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::pluck('name', 'id');
-        return view('user.create', ['categories'=>$categories]);
+        $states = [
+            'Très solide' => 'Très solide',
+            'En bonne santé' => 'En bonne santé',
+            'Mignon' => 'Mignon',
+            'Flemmard' => 'Flemmard',
+            'Presque mort' => 'Presque mort',
+        ];
+
+        return view('user.create', ['categories' => $categories, 'states' => $states]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         $product = Product::find($id);
         $categories = Product::find($id)->category->all();
-        return view('user.edit', ['categories'=>$categories, 'product' => $product]);
+        $states = [
+            'Très solide' => 'Très solide',
+            'En bonne santé' => 'En bonne santé',
+            'Mignon' => 'Mignon',
+            'Flemmard' => 'Flemmard',
+            'Presque mort' => 'Presque mort',
+        ];
+        return view('user.edit', ['categories' => $categories, 'product' => $product, 'states' => $states]);
     }
 
     public function store(Request $request)
     {
-        $slugify = new Slugify();
-        
+        $request->validate([
+            'title' => 'required|max:100',
+            'image' => 'required|max:5000',
+            'price' => 'required|min:0',
+        ]);
         $product = new Product();
         $product->title = $request->input('title');
         $product->subtitle = $request->input('subtitle');
-        $product->slug = $slugify->slugify($product->title);
+        $product->slug = (new Slugify())->slugify($product->title);
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->category_id;
         $product->user_id = Auth::user()->id;
-        
+
+
         $image = $request->file('image');
         $imageFullName = $request->file('image')->getClientOriginalName();
         $imageName = pathinfo($imageFullName, PATHINFO_FILENAME);
         $extension = $image->getClientOriginalExtension();
-        $file = time().'_'.$imageName.'.'.$extension;
-        $image->storeAs('public/products/'.Auth::user()->id,$file);
+        $file = time() . '_' . $imageName . '.' . $extension;
+        $image->storeAs('public/products/' . Auth::user()->id, $file);
         $product->image = $file;
-        
+
         $product->save();
         return redirect()->route('dashboard');
     }
@@ -90,33 +109,35 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        $slugify = new Slugify();
+        $request->validate([
+            'title' => 'required|max:100',
+            'price' => 'required|min:0',
+        ]);
         $product = Product::find($id);
-
         $product->title = $request->input('title');
         $product->subtitle = $request->input('subtitle');
-        $product->slug = $slugify->slugify($product->title);
+        $product->slug = (new Slugify())->slugify($product->title);
         $product->description = $request->input('description');
         $product->price = $request->input('price');
         $product->category_id = $request->category_id;
         $product->user_id = Auth::user()->id;
-        
-        if($request->file('image')) {
+
+        if ($request->file('image')) {
             $image = $request->file('image');
             $imageFullName = $request->file('image')->getClientOriginalName();
             $imageName = pathinfo($imageFullName, PATHINFO_FILENAME);
             $extension = $image->getClientOriginalExtension();
-            $file = time().'_'.$imageName.'.'.$extension;
-            $image->storeAs('public/products/'.Auth::user()->id,$file);
+            $file = time() . '_' . $imageName . '.' . $extension;
+            $image->storeAs('public/products/' . Auth::user()->id, $file);
             $product->image = $file;
         }
-        
+
         $product->save();
         return redirect()->route('dashboard');
     }
@@ -124,7 +145,7 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
