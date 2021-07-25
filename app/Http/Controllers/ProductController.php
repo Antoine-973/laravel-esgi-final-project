@@ -21,7 +21,7 @@ class ProductController extends Controller
 
     public function listProducts()
     {
-        $products = Product::all();
+        $products = Product::all()->sortByDesc('created_at');
         return view('listProducts', ['products' => $products]);
     }
 
