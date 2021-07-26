@@ -25,7 +25,7 @@ class UsersSeeder extends Seeder
         $user->save();
 
         $user = new User();
-        $user->name = 'Gandalf LeGris';
+        $user->name = 'Gandolf de chez SorcierTech';
         $user->email = 'UShallNotPass'.Str::random(1).'@sorciertech.com';
         $user->password = Hash::make('password');
         $user->save();
