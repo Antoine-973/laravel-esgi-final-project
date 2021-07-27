@@ -26,7 +26,7 @@ class ProductsSeeder extends Seeder
         $product->description = "Très fort au combat";
         $product->price = 45.99;
         $product->category_id = 15;
-        $product->user_id = User::all()->random(1)->first()->id;
+        $product->user_id = 1;
         $product->image = "pikatchoum.jpg";
         $product->save();
 

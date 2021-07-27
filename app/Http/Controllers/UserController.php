@@ -8,6 +8,7 @@ use App\Models\Payment;
 use Cocur\Slugify\Slugify;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use LaravelDaily\LaravelCharts\Classes\LaravelChart;
 
 class UserController extends Controller
 {
@@ -22,9 +23,18 @@ class UserController extends Controller
      */
     public function index()
     {
+        $graph_options = [
+            'chart_title' => 'Vos ventes (par mois)',
+            'report_type' => 'group_by_date',
+            'model' => 'App\Models\Payment',
+            'group_by_field' => 'created_at',
+            'group_by_period' => 'month',
+            'chart_type' => 'line',
+        ];
+        $graph = new LaravelChart($graph_options);
         $id = Auth::user()->id;
         $total_gain = Payment::where('user_id', $id)->sum('seller_part');
-        return view('dashboard', ['total_gain'=>$total_gain]);
+        return view('dashboard', compact('graph'),['total_gain'=>$total_gain]);
     }
 
     /**

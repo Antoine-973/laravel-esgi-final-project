@@ -20,7 +20,7 @@ class UsersSeeder extends Seeder
 
         $user = new User();
         $user->name = 'Sacha DuBourgPallette';
-        $user->email = 'sacha'.Str::random(2).'@gmail.com';
+        $user->email = 'sacha@gmail.com';
         $user->password = Hash::make('password');
         $user->save();
 

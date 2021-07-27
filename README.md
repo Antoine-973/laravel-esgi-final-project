@@ -41,6 +41,7 @@ Pour nous aider dans le développement du projet, nous avons utilisé :
 * anhskohbo/no-captcha pour le système de captcha Google.
 * darryldecode/cart pour l'implémentation d'un panier d'achat.
 * stripe/stripe-php pour le système de paiement en ligne.
+* laraveldaily/laravel-charts pour le système de graphique.
 
 ### Test de paiement ###
 * Numéro de la carte - 4242 4242 4242 4242

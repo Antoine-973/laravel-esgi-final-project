@@ -67,6 +67,12 @@
                             </table>
                         </div>
                     </div>
+                    <div class="card-body">
+                        <h1>{{ $graph->options['chart_title'] }}</h1>
+                        {!! $graph->renderHtml() !!}
+                        {!! $graph->renderChartJsLibrary() !!}
+                        {!! $graph->renderJs() !!}
+                    </div>
                 @endif
             </div>
         </div>
