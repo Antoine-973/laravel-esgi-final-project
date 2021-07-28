@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
@@ -26,6 +27,8 @@ Route::get('/product/{product}', [ProductController::class, 'show'])->name('show
 Route::get('/products', [ProductController::class, 'listProducts'])->name('listProducts');
 
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::get('/profile', [ProfileController::class, 'edit'])->middleware(['auth'])->name('profile');
+Route::post('profile/update/{id}', [ProfileController::class, 'update'])->middleware(['auth'])->name('update');
 Route::get('/create', [ProductController::class, 'create'])->middleware(['auth'])->name('create');
 Route::post('/store', [ProductController::class, 'store'])->middleware(['auth'])->name('store');
 Route::get('/edit/{id}', [ProductController::class, 'edit'])->middleware(['auth'])->name('edit');
